@@ -1,16 +1,35 @@
-import os
-from dotenv import load_dotenv
+"""
+Hospital AI Agent using LangChain, Google Gemini, and Model Context Protocol (MCP)
+
+This module initializes an AI-powered hospital assistant that connects to an
+MCP server to retrieve patient records and billing information. The agent
+uses Google Gemini via LangChain as the language model and dynamically
+invokes MCP tools to answer user queries.
+
+Key Features:
+- Connects to a local MCP server using MultiServerMCPClient (stdio transport)
+- Wraps MCP tools for use with a LangChain agent
+- Uses Google Gemini (gemini-2.5-flash) for natural language understanding
+- Supports interactive command-line queries for hospital database access
+- Asynchronous execution for non-blocking tool calls and model responses
+
+Requirements:
+- langchain
+- langchain_google_genai
+- langchain_mcp_adapters
+- Valid Google API Key stored in cred.py
+- Running MCP server (mcp_server.py)
+
+"""
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.agents import create_agent
 from langchain_mcp_adapters.client import MultiServerMCPClient 
 from prompt import system_prompt
+from cred import GOOGLE_API_KEY
 
 import asyncio
 
-load_dotenv()
-
-
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 async def main():
 
     client = MultiServerMCPClient(  
@@ -28,7 +47,7 @@ async def main():
 
 
     llm = ChatGoogleGenerativeAI(
-    model="gemini-2.5-flash-lite",
+    model="gemini-2.5-flash",
     google_api_key=GOOGLE_API_KEY,
     temperature=0
     )
@@ -38,7 +57,6 @@ async def main():
 
 
    
-
     tools = await client.get_tools()
 
    

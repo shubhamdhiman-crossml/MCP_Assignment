@@ -16,21 +16,6 @@ The AI agent can:
 
 ---
 
-## 📁 Project Structure
-
-```
-Hospital_Database/
-│
-├── mcp_server.py        # FastMCP hospital tool server
-├── data.py             # Sample patient and billing data
-├── agent.py           # LangChain + Google GenAI agent
-├── prompt.py          # System prompt for the AI agent
-├── .env               # API keys and environment variables
-├── requirements.txt  # Python dependencies
-└── README.md         # Project documentation
-```
-
----
 
 ## 🚀 Features
 
@@ -57,8 +42,8 @@ Make sure you have:
 ### 1️⃣ Clone or Download the Project
 
 ```bash
-git clone <your-repo-url>
-cd Hospital_Database
+git clone https://github.com/shubhamdhiman-crossml/MCP_Assignment.git
+cd MCP_Assignment
 ```
 
 ### 2️⃣ Create Virtual Environment
@@ -217,7 +202,7 @@ This project helps you understand:
 ## 🧑‍💻 Author
 
 **Shubham Dhiman**
-AI + LangChain + MCP Developer
+
 
 ---
 
